@@ -5,6 +5,7 @@ export interface ISideLink {
     Icon: ReactNode
     href: string
     isActive: boolean
+    isOpen: boolean
 }
 
 type TSideLink = FC<ISideLink>

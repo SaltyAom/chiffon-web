@@ -1,9 +1,11 @@
 import PageLayout from "layouts/page"
 
+import Summary from "components/common/summary"
+
 const Dashboard = () => {
 	return (
 		<PageLayout>
-			<h1>Hello World</h1>
+			<Summary />
 		</PageLayout>
 	)
 }

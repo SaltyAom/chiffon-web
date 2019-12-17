@@ -9,6 +9,6 @@ export interface IUpdateOrder {
 
 export type TOrderActions = IUpdateOrder
 
-export default interface IInitOrder {
+export default interface IOrderStore {
     orderBy: TOrderOptions
 }

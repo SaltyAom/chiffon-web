@@ -1,5 +1,7 @@
 import { create } from 'libs/aphrodite'
 
+import { drawerBreakpoint } from 'libs/styleBreakpoints'
+
 const RootLayoutStyle = create({
     main: {
         flex: 1,
@@ -10,7 +12,7 @@ const RootLayoutStyle = create({
         minHeight: "100vh",
         overflow: "hidden",
         padding: "10px 25px",
-        "@media screen and (min-width: 568px)": {
+        [drawerBreakpoint]: {
             padding: "50px"
         }
     }

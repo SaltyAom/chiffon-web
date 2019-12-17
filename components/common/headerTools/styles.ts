@@ -1,5 +1,7 @@
 import { create } from 'libs/aphrodite'
 
+import { drawerBreakpoint } from 'libs/styleBreakpoints'
+
 const headerToolsStyle = create({
     headerTools: {
         display: "flex",
@@ -13,9 +15,13 @@ const headerToolsStyle = create({
         fontSize: "18px",
         color: "var(--content)",
         margin: "0 0 0 10px",
-        fontWeight: 400
+        fontWeight: 400,
+        [drawerBreakpoint]: {
+            margin: 0
+        }
     },
     navigation: {
+        display: "block",
         appearance: "none",
         width: "40px",
         height: "40px",
@@ -27,6 +33,9 @@ const headerToolsStyle = create({
         transition: "background-color .15s ease-out",
         ":hover": {
             backgroundColor: "var(--mist)"
+        },
+        [drawerBreakpoint]: {
+            display: "none"
         }
     },
     navigationIcon: {

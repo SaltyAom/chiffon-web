@@ -1,10 +1,10 @@
-import IInitOrder, { TOrderActions } from "./types"
+import IOrderStore, { TOrderActions } from "./types"
 
-const initOrder: IInitOrder = {
+const initOrder: IOrderStore = {
     orderBy: "date"
 }
 
-const category = (state: IInitOrder = initOrder, action: TOrderActions) => {
+const order = (state: IOrderStore = initOrder, action: TOrderActions) => {
     switch(action.type){
         case "UPDATE_ORDER":
             return {
@@ -16,4 +16,4 @@ const category = (state: IInitOrder = initOrder, action: TOrderActions) => {
     }
 }
 
-export default category
+export default order
