@@ -11,6 +11,10 @@ const rootStyles = new String(`
 		--primary-100: #f4fcf9;
 
 		--content: #333;
+		--fade: #757575;
+		--mist: #efeff4;
+
+		--link: #007aff;
 	}
 
 	* {

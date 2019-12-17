@@ -12,8 +12,8 @@ const sidebarStyle = create({
         overflow: "hidden",
         transition: "width .15s ease-out, padding .15s ease-out",
         "@media screen and (min-width: 568px)": {
-            width: "280px",
-            padding: "30px"
+            width: "240px",
+            padding: "30px 20px"
         }
     },
     icon: {

@@ -1,6 +1,10 @@
+import PageLayout from "layouts/page"
+
 const Dashboard = () => {
 	return (
-		<h1>Hello World</h1>
+		<PageLayout>
+			<h1>Hello World</h1>
+		</PageLayout>
 	)
 }
 
