@@ -9,7 +9,7 @@ const drawerStyle = create({
         width: "0",
         height: "100vh",
         padding: "32px 0",
-        backgroundColor: "#fff",
+        backgroundColor: "var(--background)",
         boxShadow: "inset -15px 0 30px rgba(0,0,0,.03), inset -5px 0 15px rgba(0,0,0,.01)",
         overflow: "hidden",
         transition: "width .15s ease-out, padding .15s ease-out",

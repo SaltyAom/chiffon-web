@@ -15,6 +15,9 @@ const rootStyles = new String(`
 		--mist: #efeff4;
 
 		--link: #007aff;
+
+		--background: #fff;
+		--root: #fff;
 	}
 
 	* {
@@ -28,6 +31,7 @@ const rootStyles = new String(`
 
 	body {
 		margin: 0;
+		background-color: var(--background);
 	}
 
 	#__next {

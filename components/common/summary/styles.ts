@@ -6,7 +6,10 @@ const summaryStyle = create({
         flexDirection: "column",
         width: "100%",
         height: "auto",
-        margin: "15px 0 45px 0"
+        margin: "0 0 45px 0",
+        "@media screen and (min-width: 568px)": {
+            width: "33.33%"
+        }
     }
 })
 
