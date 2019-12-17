@@ -1,0 +1,42 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": false,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"typeRoots": ["typings"],
+		"paths": {
+			"react": ["preact/compat"],
+			"react-dom": ["preact/compat"],
+			"react-render-to-string": ["preact-render-to-string"],
+			"~": ["."],
+			"pages": ["pages"],
+			"components": ["components"],
+			"libs": ["libs"],
+			"pageTypes": ["pageTypes"],
+			"stores": ["stores"],
+			"layouts": ["layouts"]
+		}
+	},
+	"exclude": ["node_modules"],
+	"include": [
+		"next-env.d.ts",
+		"typings/custom.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/**/*.ts",
+		"**/**/*.tsx",
+		"**/**/**/*.ts",
+		"**/**/**/*.tsx"
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"name": "chiffon-universal",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@material/react-button": "^0.15.0",
+		"next": "^9.1.4",
+		"preact": "^10.0.5",
+		"preact-render-to-string": "^5.1.1",
+		"react-redux": "^7.1.3",
+		"redux": "^4.0.4"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.11",
+		"@types/react": "^16.9.11",
+		"@zeit/next-css": "^1.0.1",
+		"@zeit/next-stylus": "^1.0.1",
+		"aphrodite": "^2.4.0",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"stylus": "^0.54.7",
+		"typescript": "^3.7.2"
+	}
+}
