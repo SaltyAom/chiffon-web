@@ -36,6 +36,7 @@ const rootStyles = new String(`
 
 	#__next {
 		display: flex;
+		overflow: hidden;
 	}
 `).replace(/ |\t|\n/g, "")
 

@@ -20,6 +20,7 @@ const drawerLinkStyle = create({
         transition: "background-color .15s ease-out, box-shadow .15s ease-out",
         outline: "none",
         ":hover, :focus": {
+            transform: "scale(1)",
             backgroundColor: "var(--primary-200)",
             boxShadow: "0 4px 12px var(--primary-100)",
         },

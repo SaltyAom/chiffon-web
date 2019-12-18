@@ -4,7 +4,7 @@ import { drawerBreakpoint } from 'libs/styleBreakpoints'
 
 const RootLayoutStyle = create({
     main: {
-        flex: 1,
+        flex: "1 0 auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",

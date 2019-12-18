@@ -12,7 +12,7 @@ const detailStyle = create({
         fontSize: "14px"
     },
     currency: {
-        color: "var(--primary-400)",
+        color: "var(--primary-500)",
         fontSize: "16px",
         fontWeight: 700,
         margin: "0 0 0 8px"

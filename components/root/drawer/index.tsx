@@ -5,17 +5,19 @@ import { connect } from "react-redux"
 import { useRouter } from "next/router"
 
 import DrawerNavigation from "./drawerNavigation"
+import ProfileBadge from './profile'
 
 import DashboardIcon from "components/icon/dashboard"
 import ChartIcon from "components/icon/chart"
 import MoneyIcon from "components/icon/money"
 
 import { css } from "libs/aphrodite"
-import drawerStyle, {
+import {
 	drawer,
 	__drawer_isOpen,
 	__icon_isOpen,
-	icon
+	icon,
+	navigationBody
 } from "./styles"
 
 import TDrawer, { IDrawerConnectProps } from "./types"
@@ -78,9 +80,12 @@ const Sidebar: TDrawer = memo(({ store }) => {
 
 	return (
 		<aside className={applyState(drawer, __drawer_isOpen)}>
-			{navigationLists.map(navigation => (
-				<DrawerNavigation key={navigation.title} {...navigation} />
-			))}
+			<section className={css(navigationBody)}>
+				{navigationLists.map(navigation => (
+					<DrawerNavigation key={navigation.title} {...navigation} />
+				))}
+			</section>
+			<ProfileBadge profileIcon="/mock/akashi.png" name="aomkirby" isOpen={isOpen} />
 		</aside>
 	)
 })

@@ -1,6 +1,6 @@
 import { FC, memo, Fragment } from 'react'
 
-import Sidebar from "components/root/sidebar"
+import Drawer from "components/root/drawer"
 
 import { css } from 'libs/aphrodite'
 import { main } from './styles'
@@ -9,7 +9,7 @@ import IRootLayout from './types'
 
 const RootLayout:FC<IRootLayout> = memo(({ children }) => (
     <Fragment>
-        <Sidebar />
+        <Drawer />
         <main className={css(main)}>
             {children}
         </main>

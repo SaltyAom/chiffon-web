@@ -1,14 +1,16 @@
-import { Fragment } from "react"
+import { Fragment, memo } from "react"
 
 import SummaryDetail from "../../detail"
 
-const Spent = () => (
+import TSpendSummary from "./types"
+
+const SpentSummary: TSpendSummary = memo(({ children, detail, currency }) => (
 	<Fragment>
-		<SummaryDetail subHeader="You have spent over 7 days" currency="฿">
-			100
+		<SummaryDetail subHeader={detail} currency={currency}>
+			{children}
 		</SummaryDetail>
 		<div></div>
 	</Fragment>
-)
+))
 
-export default Spent
+export default SpentSummary

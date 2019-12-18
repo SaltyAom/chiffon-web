@@ -9,7 +9,7 @@ const headerToolsStyle = create({
         justifyContent: "flex-start",
         alignItems: "center",
         width: "100%",
-        margin: "15px 0"
+        margin: "16px 0"
     },
     pageName: {
         fontSize: "18px",

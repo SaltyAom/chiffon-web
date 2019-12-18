@@ -6,14 +6,28 @@ import { summaryCard, mark, wrapper } from "./styles"
 import TSummaryCard from "./types"
 
 const SummaryCard: TSummaryCard = memo(
-	({ className, children, noMark = false }) => (
+	({
+		className,
+		children,
+		noMark = false,
+		onClick = () => null,
+		wrapperClassName
+	}) => (
 		<div
 			className={
 				className ? css(summaryCard, className) : css(summaryCard)
 			}
+			onClick={() => onClick()}
 		>
 			{noMark ? (
-				<div className={css(wrapper)} style={{ padding: 0 }}>
+				<div
+					className={
+						wrapperClassName
+							? css(wrapper, wrapperClassName)
+							: css(wrapper)
+					}
+					style={{ padding: 0 }}
+				>
 					{children}
 				</div>
 			) : (
