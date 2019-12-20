@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
-interface ISummaryCard {
+interface ICard {
     className?: any
     wrapperClassName?: any
     noMark?: boolean
     onClick?: Function
+    preload?: boolean
 }
 
-type TSummaryCard = FC<ISummaryCard>
-export default TSummaryCard
+type TCard = FC<ICard>
+export default TCard

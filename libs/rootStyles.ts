@@ -1,4 +1,10 @@
 const rootStyles = new String(`
+	@font-face {
+		font-family: Roboto;
+		src: url("/app/fonts/Roboto-Regular.ttf");
+		font-display: swap;
+	}
+
 	:root {
 		--primary-900: #176474;
 		--primary-800: #1f8c60;
@@ -18,10 +24,11 @@ const rootStyles = new String(`
 
 		--background: #fff;
 		--root: #fff;
+		--preload: #efeff4;
 	}
 
 	* {
-		font-family: Helvetica;
+		font-family: -apple-system, Blinkmacfont, Roboto, Oxygen, Helvetica, "Segoe UI", sans-serif;
 		box-sizing: border-box;
 	}
 

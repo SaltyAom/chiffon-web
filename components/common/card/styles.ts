@@ -1,7 +1,7 @@
 import { create } from 'libs/aphrodite'
 
-const summaryCardStyle = create({
-    summaryCard: {
+const cardStyle = create({
+    card: {
         position: "relative",
         display: "flex",
         flexDirection: "row",
@@ -31,8 +31,28 @@ const summaryCardStyle = create({
         backgroundColor: "var(--primary-600)",
         borderTopRightRadius: "4px",
         borderBottomRightRadius: "4px"
+    },
+    preloadCard: {
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start"
+    },
+    preloadInfo: {
+        display: "block",
+        width: "40%",
+        height: "48px",
+        borderRadius: "4px",
+        backgroundColor: "var(--preload)"
+    },
+    preloadSubInfo: {
+        display: "block",
+        width: "70%",
+        height: "16px",
+        margin: "12px 0 0 0",
+        borderRadius: "4px",
+        backgroundColor: "var(--preload)"
     }
 })
 
-export const { summaryCard, wrapper, mark } = summaryCardStyle
-export default summaryCardStyle
+export const { card, wrapper, mark, preloadCard, preloadInfo, preloadSubInfo } = cardStyle
+export default cardStyle

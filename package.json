@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@material/react-button": "^0.15.0",
+		"firebase": "^7.6.1",
 		"next": "^9.1.4",
 		"preact": "^10.0.5",
 		"preact-render-to-string": "^5.1.1",

@@ -1,6 +1,6 @@
 import { Fragment, memo } from "react"
 
-import SummaryDetail from "../../detail"
+import SummaryDetail from "components/common/card/detail"
 
 import TAmountSummary from './types'
 

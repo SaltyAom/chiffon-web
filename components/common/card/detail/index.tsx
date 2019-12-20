@@ -8,9 +8,9 @@ import {
 	currency as currencyStyle
 } from "./styles"
 
-import TSummaryDetail from "./types"
+import TCardDetail from "./types"
 
-const SummaryDetail: TSummaryDetail = memo(
+const SummaryDetail: TCardDetail = memo(
 	({ currency, subHeader, children }) => (
 		<div className={css(detail)}>
 			<h2 className={css(header)}>

@@ -1,18 +1,23 @@
-import { useState, useLayoutEffect } from "react"
+import { useState, useEffect, useLayoutEffect } from "react"
 
 import { connect } from "react-redux"
 
-import Card from "../card"
+/**
+ * ? Required components Card
+ */
+import Card from "components/common/card"
 
 import Spent from "../body/spent"
 import Amount from "../body/amount"
 
-import { isServer } from 'libs/helpers'
+import { isServer } from "libs/helpers"
+import { getCollection } from "libs/connectData"
 
 import {
 	stackWrapper,
 	__stackWrapper_isOpen,
 	stackInnerWrapper,
+	__stackInnerWrapper_isOpen,
 	stackBody,
 	secondStacked,
 	thirdStacked,
@@ -20,6 +25,7 @@ import {
 } from "./styles"
 
 import {
+	__stackWrapper_expanded,
 	__secondStacked_moving_out,
 	__thirdStacked_moving_out,
 	__fourthStacked_moving_out,
@@ -28,7 +34,7 @@ import {
 	__thirdStacked_moving_in,
 	__fourthStacked_moving_in,
 	__fifthStacked_moving_in
-} from './motion'
+} from "./motion"
 
 import TSummaryStack, {
 	ISummaryConnectStore,
@@ -55,13 +61,36 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 	let [isCalculating, setCalculation] = useState(false),
 		[isInitial, setInitial] = useState(true)
 
+	let [usage, updateUsage] = useState(undefined),
+		[usageCount, updateusageCount] = useState(undefined)
+
+	useEffect(() => {
+		fetchInitialCollection()
+	}, [])
+
+	const fetchInitialCollection = async () => {
+		let history = await getCollection("2019-12-19")
+
+		let temporaryData = history.docs.map(collection => collection.data())
+
+		updateUsage(
+			temporaryData.reduce(
+				(collection, nextCollection) =>
+					collection.transaction.amount +
+					nextCollection.transaction.amount
+			)
+		)
+
+		updateusageCount(temporaryData.length)
+	}
+
 	/**
 	 * ? useLayoutEffect will compute anything in callback before render.
 	 * ? useLayoutEffect doesn't work on server-side rendering.
 	 */
-	if(!isServer)
+	if (!isServer)
 		useLayoutEffect(() => {
-			if(isInitial) return setInitial(false)
+			if (isInitial) return setInitial(false)
 
 			setCalculation(true)
 			setTimeout(() => setCalculation(false), 600)
@@ -73,30 +102,36 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 	if (isCalculating && isStack)
 		return (
 			<Card
-				className={stackWrapper}
+				className={[stackWrapper, __stackWrapper_expanded]}
 				wrapperClassName={stackInnerWrapper}
 				noMark
 				onClick={() => handleStack()}
 			>
-				<Card className={stackBody}>
+				<Card
+					className={stackBody}
+					preload={typeof usage === "undefined"}
+				>
 					<Spent detail="Is spent on today" currency="฿">
-						90
+						{usage}
 					</Spent>
 				</Card>
-				<Card className={[secondStacked, __secondStacked_moving_out]}>
-					<Amount>5</Amount>
+				<Card
+					className={[secondStacked, __secondStacked_moving_out]}
+					preload={typeof usage === "undefined"}
+				>
+					<Amount>{usageCount}</Amount>
 				</Card>
-				<Card className={[thirdStacked, __thirdStacked_moving_out]}>
-					<Spent detail="You have spent over 7 days" currency="฿">
-						120
-					</Spent>
-				</Card>
+				<Card
+					className={[thirdStacked, __thirdStacked_moving_out]}
+					preload={typeof usage === "undefined"}
+				></Card>
 				<Card
 					className={[
 						thirdStacked,
 						ghostStacked,
 						__fourthStacked_moving_out
 					]}
+					preload={typeof usage === "undefined"}
 				/>
 				<Card
 					className={[
@@ -104,6 +139,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 						ghostStacked,
 						__fifthStacked_moving_out
 					]}
+					preload={typeof usage === "undefined"}
 				/>
 			</Card>
 		)
@@ -117,25 +153,31 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				noMark
 				onClick={() => handleStack()}
 			>
-				<Card className={stackBody}>
+				<Card
+					className={stackBody}
+					preload={typeof usage === "undefined"}
+				>
 					<Spent detail="Is spent on today" currency="฿">
-						90
+						{usage}
 					</Spent>
 				</Card>
-				<Card className={[secondStacked, __secondStacked_moving_in]}>
-					<Amount>5</Amount>
+				<Card
+					className={[secondStacked, __secondStacked_moving_in]}
+					preload={typeof usage === "undefined"}
+				>
+					<Amount>{usageCount}</Amount>
 				</Card>
-				<Card className={[thirdStacked, __thirdStacked_moving_in]}>
-					<Spent detail="You have spent over 7 days" currency="฿">
-						120
-					</Spent>
-				</Card>
+				<Card
+					className={[thirdStacked, __thirdStacked_moving_in]}
+					preload={typeof usage === "undefined"}
+				></Card>
 				<Card
 					className={[
 						thirdStacked,
 						ghostStacked,
 						__fourthStacked_moving_in
 					]}
+					preload={typeof usage === "undefined"}
 				/>
 				<Card
 					className={[
@@ -143,6 +185,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 						ghostStacked,
 						__fifthStacked_moving_in
 					]}
+					preload={typeof usage === "undefined"}
 				/>
 			</Card>
 		)
@@ -150,38 +193,41 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 	if (isStack)
 		return (
 			<Card
-				className={[stackWrapper, stackInnerWrapper]}
-				wrapperClassName={__stackWrapper_isOpen}
+				className={[stackWrapper, __stackWrapper_isOpen]}
+				wrapperClassName={__stackInnerWrapper_isOpen}
 				noMark
 				onClick={() => toggleStack()}
+				preload={typeof usage === "undefined"}
 			>
-				<Card>
+				<Card preload={typeof usage === "undefined"}>
 					<Spent detail="Is spent on today" currency="฿">
-						90
+						{usage}
 					</Spent>
 				</Card>
-				<Card>
-					<Amount>5</Amount>
+				<Card preload={typeof usage === "undefined"}>
+					<Amount>{usageCount}</Amount>
 				</Card>
-				<Card>
-					<Spent detail="You have spent over 7 days" currency="฿">
-						120
-					</Spent>
-				</Card>
-				<Card />
-				<Card />
+				<Card preload={typeof usage === "undefined"} />
+				<Card preload={typeof usage === "undefined"} />
+				<Card preload={typeof usage === "undefined"} />
 			</Card>
 		)
 
 	return (
 		<Card className={stackWrapper} noMark onClick={() => handleStack()}>
-			<Card className={stackBody}>
+			<Card className={stackBody} preload={typeof usage === "undefined"}>
 				<Spent detail="Is spent on today" currency="฿">
-					90
+					{usage}
 				</Spent>
 			</Card>
-			<Card className={secondStacked} />
-			<Card className={thirdStacked} />
+			<Card
+				className={secondStacked}
+				preload={typeof usage === "undefined"}
+			/>
+			<Card
+				className={thirdStacked}
+				preload={typeof usage === "undefined"}
+			/>
 		</Card>
 	)
 }

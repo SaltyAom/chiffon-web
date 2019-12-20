@@ -2,19 +2,30 @@ import { create } from "libs/aphrodite"
 
 const stackStyle = create({
 	stackWrapper: {
-		justifyContent: "center",
+		justifyContent: "flex-start",
+		alignItems: "flex-start",
+		height: "120px",
 		padding: 0,
 		boxShadow: 0,
-		transition: "transform .375s ease-out",
+		transition: "transform .375s ease-out, height .55s ease-out",
 		":active, :focus": {
 			transform: "scale(.95)"
 		}
 	},
-	stackInnerWrapper: {
+	__stackWrapper_isOpen: {
+		height: "680px",
 		margin: 0
 	},
-	__stackWrapper_isOpen: {
-		flexDirection: "column"
+	stackInnerWrapper: {
+		height: "120px",
+		flexDirection: "column",
+		justifyContent: "flex-start",
+		alignItems: 'flex-start',
+		margin: 0,
+	},
+	__stackInnerWrapper_isOpen: {
+		flexDirection: "column",
+		height: "680px"
 	},
 	stackBody: {
 		margin: 0
@@ -42,6 +53,7 @@ export const {
 	stackWrapper,
 	__stackWrapper_isOpen,
 	stackInnerWrapper,
+	__stackInnerWrapper_isOpen,
 	stackBody,
 	secondStacked,
 	thirdStacked,

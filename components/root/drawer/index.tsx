@@ -85,7 +85,7 @@ const Sidebar: TDrawer = memo(({ store }) => {
 					<DrawerNavigation key={navigation.title} {...navigation} />
 				))}
 			</section>
-			<ProfileBadge profileIcon="/mock/akashi.png" name="aomkirby" isOpen={isOpen} />
+			<ProfileBadge profileIcon="/mock/akashi.png" name="SaltyAom" isOpen={isOpen} />
 		</aside>
 	)
 })

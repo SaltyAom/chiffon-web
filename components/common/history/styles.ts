@@ -2,14 +2,13 @@ import { create } from 'libs/aphrodite'
 
 import { smallDrawerBreakpoint, drawerBreakpoint } from 'libs/styleBreakpoints'
 
-const summaryStyle = create({
-    container: {
+const historyStyle = create({
+    history: {
         display: "flex",
         flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
         width: "100%",
-        height: "auto",
-        margin: "0 0 45px 0",
-        transition: "height .55s ease-out",
         [smallDrawerBreakpoint]: {
             width: "50%"
         },
@@ -19,5 +18,5 @@ const summaryStyle = create({
     }
 })
 
-export const { container } = summaryStyle
-export default summaryStyle
+export const { history } = historyStyle
+export default historyStyle

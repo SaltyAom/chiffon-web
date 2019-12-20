@@ -41,6 +41,10 @@ const applyMotion = ({
 })
 
 const stackMotion = create({
+	__stackWrapper_expanded: {
+		height: "680px",
+		backgroundColor: "transparent"
+	} ,
     __secondStacked_moving_out: applyMotion({
 		start: 8,
 		end: 128,
@@ -100,6 +104,7 @@ const stackMotion = create({
 })
 
 export const {
+	__stackWrapper_expanded,
 	__secondStacked_moving_out,
 	__thirdStacked_moving_out,
 	__fourthStacked_moving_out,
