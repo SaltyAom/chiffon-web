@@ -1,7 +1,14 @@
 import { Fragment, memo } from "react"
 
 import { css } from "libs/aphrodite"
-import { card, mark, wrapper, preloadCard, preloadInfo, preloadSubInfo } from "./styles"
+import {
+	card,
+	mark,
+	wrapper,
+	preloadCard,
+	preloadInfo,
+	preloadSubInfo
+} from "./styles"
 
 import TCard from "./types"
 
@@ -13,19 +20,16 @@ const Card: TCard = memo(
 		onClick = () => null,
 		wrapperClassName,
 		preload = false
-	}) => {
-		if (preload)
-			return (
-				<div className={className ? css(card, className) : css(card)}>
-					<div className={css(mark)} />
-					<div className={css(wrapper, preloadCard)}>
-						<div className={css(preloadInfo)} />
-						<div className={css(preloadSubInfo)} />
-					</div>
+	}) =>
+		preload ? (
+			<div className={className ? css(card, className) : css(card)}>
+				<div className={css(mark)} />
+				<div className={css(wrapper, preloadCard)}>
+					<div className={css(preloadInfo)} />
+					<div className={css(preloadSubInfo)} />
 				</div>
-			)
-
-		return (
+			</div>
+		) : (
 			<div
 				className={className ? css(card, className) : css(card)}
 				onClick={() => onClick()}
@@ -49,7 +53,6 @@ const Card: TCard = memo(
 				)}
 			</div>
 		)
-	}
 )
 
 export default Card

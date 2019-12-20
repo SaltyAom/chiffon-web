@@ -5,8 +5,10 @@ import App from "next/app"
 import Head from "next/head"
 
 import { Provider } from "react-redux"
-import store from "stores/index"
+import { store, persistor } from "stores"
+import { PersistGate } from "redux-persist/integration/react"
 
+import Authentication from "layouts/authentication"
 import RootLayout from "layouts/root"
 
 class Chiffon extends App {
@@ -23,9 +25,17 @@ class Chiffon extends App {
 					/>
 				</Head>
 				<Provider store={store}>
-					<RootLayout>						
-						<Component {...pageProps} />
-					</RootLayout>						
+					<PersistGate loading={(
+						<RootLayout>
+							<Component {...pageProps} />
+						</RootLayout>
+					)} persistor={persistor}>
+						<Authentication>
+							<RootLayout>
+								<Component {...pageProps} />
+							</RootLayout>
+						</Authentication>
+					</PersistGate>
 				</Provider>
 			</Fragment>
 		)

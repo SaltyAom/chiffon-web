@@ -10,7 +10,7 @@ import Card from "components/common/card"
 import Spent from "../body/spent"
 import Amount from "../body/amount"
 
-import { isServer } from "libs/helpers"
+import { isServer, isArrayBlank } from "libs/helpers"
 import { getCollection } from "libs/connectData"
 
 import {
@@ -74,11 +74,13 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 		let temporaryData = history.docs.map(collection => collection.data())
 
 		updateUsage(
-			temporaryData.reduce(
-				(collection, nextCollection) =>
-					collection.transaction.amount +
-					nextCollection.transaction.amount
-			)
+			!isArrayBlank(temporaryData)
+				? temporaryData.reduce(
+						(collection, nextCollection) =>
+							collection.transaction.amount +
+							nextCollection.transaction.amount
+				  )
+				: 0
 		)
 
 		updateusageCount(temporaryData.length)

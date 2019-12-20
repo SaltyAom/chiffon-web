@@ -1,6 +1,6 @@
 import { create } from "libs/aphrodite"
 
-import { drawerBreakpoint, smallDrawerBreakpoint } from "libs/styleBreakpoints"
+import { smallDrawerBreakpoint } from "libs/styleBreakpoints"
 
 const profileBadegStyle = create({
 	profile: {
@@ -31,11 +31,22 @@ const profileBadegStyle = create({
 			justifyContent: "flex-start"
 		}
 	},
+	profileFigure: {
+		display: "block",
+		width: "40px",
+		height: "40px",
+		margin: 0,
+		borderRadius: "50%"
+	},
+	__profileFigure_preload: {
+		backgroundColor: "var(--preload)"
+	},
 	profileImage: {
 		display: "block",
-		width: "48px",
-		height: "48px",
-		borderRadius: "inherit"
+		width: "inherit",
+		height: "inherit",
+		borderRadius: "inheirt",
+		margin: 0
 	},
 	profileName: {
 		color: "var(--content)",
@@ -50,14 +61,24 @@ const profileBadegStyle = create({
 		[smallDrawerBreakpoint]: {
 			display: "block"
 		}
+	},
+	__profileName_preload: {
+		display: "block",
+		width: "70%",
+		height: "24px",
+		backgroundColor: "var(--preload)",
+		borderRadius: "4px"
 	}
 })
 
 export const {
 	profile,
 	__profile_isOpen,
+	profileFigure,
+	__profileFigure_preload,
 	profileImage,
 	profileName,
-	__profileName_isOpen
+	__profileName_isOpen,
+	__profileName_preload
 } = profileBadegStyle
 export default profileBadegStyle

@@ -18,6 +18,8 @@ const drawerLinkStyle = create({
         borderRadius: "8px",
         backgroundColor: "transparent",
         transition: "background-color .15s ease-out, box-shadow .15s ease-out",
+        cursor: "pointer",
+        touchAction: "manipulation",
         outline: "none",
         ":hover, :focus": {
             transform: "scale(1)",

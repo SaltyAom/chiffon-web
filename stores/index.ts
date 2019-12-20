@@ -1,4 +1,7 @@
-import { createStore, compose } from 'redux'
+import { createStore, compose } from "redux"
+
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
 import rootReducer from "stores/reducer"
 
@@ -7,5 +10,12 @@ const composeEnhancers =
 		(window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] as typeof compose)) ||
 	compose
 
-const store = createStore(rootReducer, composeEnhancers())
-export default store
+const persistConfig = {
+		key: "root",
+		storage,
+		whitelist: ["user"]
+	},
+	persistedReducers = persistReducer(persistConfig, rootReducer)
+
+export const store = createStore(persistedReducers, composeEnhancers()),
+	persistor = persistStore(store)

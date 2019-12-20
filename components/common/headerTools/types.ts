@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Action } from 'redux'
 
-import IToggleDrawer from 'stores/reducers/drawer/types'
+import { IToggleDrawer } from 'stores/reducers/drawer/types'
 
 export interface IHeaderToolsProps {
     name: string

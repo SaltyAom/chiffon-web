@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import { useRouter } from "next/router"
 
 import DrawerNavigation from "./drawerNavigation"
-import ProfileBadge from './profile'
+import ProfileBadge from "./profile"
 
 import DashboardIcon from "components/icon/dashboard"
 import ChartIcon from "components/icon/chart"
@@ -13,7 +13,7 @@ import MoneyIcon from "components/icon/money"
 
 import { css } from "libs/aphrodite"
 import {
-	drawer,
+	drawer as drawerStyle,
 	__drawer_isOpen,
 	__icon_isOpen,
 	icon,
@@ -23,11 +23,16 @@ import {
 import TDrawer, { IDrawerConnectProps } from "./types"
 
 const mapStateToProps = (state): IDrawerConnectProps => ({
-	store: state.drawer
+	store: {
+		drawer: state.drawer,
+		user: state.user
+	}
 })
 
 const Sidebar: TDrawer = memo(({ store }) => {
-	let { isOpen } = store
+	let { drawer, user } = store,
+		{ isOpen } = drawer,
+		{ name, profile, isLoggedIn } = user
 
 	let { route } = useRouter()
 
@@ -38,9 +43,7 @@ const Sidebar: TDrawer = memo(({ store }) => {
 		applyColor = (path, route) =>
 			path === route ? { color: "#fff" } : { color: "var(--content)" },
 		applyState = (rootClass, activeClass) =>
-			isOpen
-				? css(rootClass, activeClass)
-				: css(rootClass)
+			isOpen ? css(rootClass, activeClass) : css(rootClass)
 
 	let navigationLists = [
 		{
@@ -58,8 +61,8 @@ const Sidebar: TDrawer = memo(({ store }) => {
 			title: "analyze",
 			Icon: (
 				<ChartIcon
-                    className={applyState(icon, __icon_isOpen)}
-                    {...applyColor("/analyze", route)}
+					className={applyState(icon, __icon_isOpen)}
+					{...applyColor("/analyze", route)}
 				/>
 			),
 			isOpen: isOpen,
@@ -69,23 +72,34 @@ const Sidebar: TDrawer = memo(({ store }) => {
 			title: "goal",
 			Icon: (
 				<MoneyIcon
-                    className={applyState(icon, __icon_isOpen)}
-                    {...applyColor("/goal", route)}
+					className={applyState(icon, __icon_isOpen)}
+					{...applyColor("/goal", route)}
 				/>
 			),
 			isOpen: isOpen,
 			...applyPath("/goal", route)
 		}
-    ]
+	]
 
 	return (
-		<aside className={applyState(drawer, __drawer_isOpen)}>
+		<aside className={applyState(drawerStyle, __drawer_isOpen)}>
 			<section className={css(navigationBody)}>
 				{navigationLists.map(navigation => (
 					<DrawerNavigation key={navigation.title} {...navigation} />
 				))}
 			</section>
-			<ProfileBadge profileIcon="/mock/akashi.png" name="SaltyAom" isOpen={isOpen} />
+			<ProfileBadge
+				profileIcon="/mock/akashi.png"
+				name={name}
+				isOpen={isOpen}
+				preload={!isLoggedIn}
+			/>
+			{/* <ProfileBadge
+				profileIcon={profile}
+				name={name}
+				isOpen={isOpen}
+				preload={!isLoggedIn}
+			/> */}
 		</aside>
 	)
 })

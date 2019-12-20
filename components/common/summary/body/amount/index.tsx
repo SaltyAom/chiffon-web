@@ -6,7 +6,7 @@ import TAmountSummary from './types'
 
 const AmountSummary: TAmountSummary = memo(({ children }) => (
 	<Fragment>
-		<SummaryDetail subHeader="You have spent on today" currency="Items">
+		<SummaryDetail subHeader="Have been spent on" currency="Items">
 			{ children }
 		</SummaryDetail>
 		<div></div>

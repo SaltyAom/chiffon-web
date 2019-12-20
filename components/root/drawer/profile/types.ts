@@ -4,6 +4,7 @@ interface IProfileBadge {
     profileIcon: string
     name: string
     isOpen: boolean
+    preload?: boolean
 }
 
 type TProfileBadge = FC<IProfileBadge>
