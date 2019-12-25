@@ -5,7 +5,8 @@ import { Action } from 'redux'
 import { IWorkspaceDisplay, IDisplayOnWorkspace } from 'stores/reducers/workspace/types'
 
 export interface IHistoryOwnProps {
-    date: "today" | "yesterday" | "thisWeek" | number
+    date: "today" | "yesterday" | "this week" | number
+    withPreload?: boolean
 }
 
 export interface IHistoryConnectProps {

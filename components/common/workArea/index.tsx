@@ -36,23 +36,22 @@ const WorkArea: TWorkArea = ({ store }) => {
 
 	return (
 		<Fragment>
-			{console.log(display)}
-			<header className={css(header)}>
+			<header className={css(header)} key={time}>
 				<h1 className={css(title)}>{item.name}</h1>
 				<h2 className={css(subTitle)}>ประเภท: {item.subType}</h2>
 			</header>
 			<section className={css(detail)}>
-				<article className={css(priceCard)}>
+				<article className={css(priceCard)} key={time}>
 					<h3 className={css(price)}>{transaction.amount}</h3>
 					<span className={css(currency)}>
 						{transaction.currency}
 					</span>
 				</article>
-				<footer className={css(cardDetail)}>
+				<footer className={css(cardDetail)} key={time}>
 					<p className={css(cardSubTitle)}>4/8 items in the day.</p>
 					<p className={css(cardSubDetail)}>
 						{new Date(time).toLocaleDateString()}{" "}
-						<span style={{marginLeft: "8px"}}>{getTime(new Date(time))}</span>
+						<span style={{marginLeft: "8px"}}>{new Date(time).toLocaleTimeString()}</span>
 					</p>
 					<button className={css(expense)}>Expense</button>
 				</footer>

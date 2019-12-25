@@ -6,12 +6,14 @@ const historyStyle = create({
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-start",
-        width: "100%"
+        width: "100%",
+        margin: "8px 0"
     },
     title: {
         color: "var(--content)",
         fontSize: "18px",
         fontWeight: "normal",
+        textTransform: "capitalize",
         margin: 0
     }
 })

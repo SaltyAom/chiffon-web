@@ -1,6 +1,6 @@
 import { create } from 'libs/aphrodite'
 
-import { drawerBreakpoint, smallDrawerBreakpoint, shadow } from 'libs/styleBreakpoints'
+import { drawerBreakpoint, smallDrawerBreakpoint, darkTheme } from 'libs/styleBreakpoints'
 
 const drawerStyle = create({
     drawer: {
@@ -12,8 +12,8 @@ const drawerStyle = create({
         width: "0",
         height: "100vh",
         padding: "32px 0 8px 0",
-        backgroundColor: "var(--root)",
-        boxShadow: `inset 0 0.625rem 3.5rem 0 rgba(198,203,222,.25)`,
+        backgroundColor: "var(--aside)",
+        boxShadow: `inset -2px 0 4px var(--shadow-color)`,
         overflow: "hidden",
         transition: "width .15s ease-out, padding .15s ease-out",
         [drawerBreakpoint]: {
@@ -24,6 +24,9 @@ const drawerStyle = create({
             width: "92px",
             padding: "20px 0 8px 0",
             alignItems: "center"
+        },
+        [darkTheme]: {
+            boxShadow: "unset"
         }
     },
     __drawer_isOpen: {

@@ -7,7 +7,9 @@ const Dashboard = () => {
 	return (
 		<PageLayout>
 			<Summary />
-			<History />
+			<History date="today" withPreload />
+			<History date="yesterday" />
+			<History date="this week" />
 		</PageLayout>
 	)
 }

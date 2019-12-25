@@ -50,14 +50,26 @@ const stackStyle = create({
 		zIndex: -100,
 		bottom: "-24px",
 		transform: "scale(.9)",
-		opacity: 0.8
+		opacity: 0.8,
+		":hover": {
+			transform: "unset"
+		},
+		":focus": {
+			transform: "unset"
+		}
 	},
 	thirdStacked: {
 		position: "absolute",
 		zIndex: -200,
 		bottom: "-36px",
 		transform: "scale(.85)",
-		opacity: 0.6
+		opacity: 0.6,
+		":hover": {
+			transform: "unset"
+		},
+		":focus": {
+			transform: "unset"
+		}
 	},
 	ghostStacked: {
 		boxShadow: 0

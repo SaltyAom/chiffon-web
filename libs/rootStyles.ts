@@ -25,6 +25,9 @@ const rootStyles = new String(`
 		--background: #fff;
 		--root: #fff;
 		--preload: #f1f2fa;
+		--aside: #fff;
+
+		--shadow-color: rgba(198,203,222,.45)
 	}
 
 	* {
@@ -67,6 +70,9 @@ const rootStyles = new String(`
 			--background: #333;
 			--root: #555;
 			--preload: #777;
+			--aside: #282828;
+
+			--shadow-color: rgba(0,0,0,.45)
 		}
 	}
 `).replace(/ |\t|\n/g, "")

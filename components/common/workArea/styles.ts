@@ -1,6 +1,13 @@
 import { create } from "libs/aphrodite"
 import { shadow } from "libs/styleBreakpoints"
 
+const appearKeyframes = {
+    "from": {
+        opacity: 0,
+        transform: "translateY(20px)"
+    }
+}
+
 const workAreaStyle = create({
 	header: {
 		display: "flex",
@@ -8,7 +15,10 @@ const workAreaStyle = create({
 		justifyContent: "flex-start",
 		alignItems: "flex-start",
 		width: "100%",
-		margin: "0 0 20px 0"
+        margin: "0 0 20px 0",
+        animationName: [appearKeyframes],
+        animationDuration: ".3s",
+        animationIterationCount: 1
 	},
 	title: {
 		fontSize: "48px",
@@ -30,7 +40,10 @@ const workAreaStyle = create({
         height: "160px",
 		borderRadius: "8px",
 		backgroundColor: "var(--root)",
-		boxShadow: shadow
+        boxShadow: shadow,
+        animationName: [appearKeyframes],
+        animationDuration: ".45s",
+        animationIterationCount: 1
 	},
 	price: {
 		width: "100%",
@@ -41,8 +54,8 @@ const workAreaStyle = create({
 	},
 	currency: {
 		fontSize: "14px",
-		color: "inherit",
-		marginLeft: "8px"
+        color: "var(--fade)",
+        marginLeft: "8px",
 	},
 	cardDetail: {
         flex: 1,
@@ -51,7 +64,10 @@ const workAreaStyle = create({
         justifyContent: "space-between",
         alignItems: "flex-start",
         padding: "16px 0 0 28px",
-        height: "160px"
+        height: "160px",
+        animationName: [appearKeyframes],
+        animationDuration: ".6s",
+        animationIterationCount: 1
     },
     expense: {
         appearance: "none",

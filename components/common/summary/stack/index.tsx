@@ -11,7 +11,7 @@ import Spent from "../body/spent"
 import Amount from "../body/amount"
 
 import { isServer, isArrayBlank } from "libs/helpers"
-import { getCollection } from "libs/connectData"
+import { getCollection, getDate } from "libs/connectData"
 
 import {
 	stackWrapper,
@@ -63,14 +63,15 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 		[isInitial, setInitial] = useState(true)
 
 	let [usage, updateUsage] = useState(undefined),
-		[usageCount, updateusageCount] = useState(undefined)
+		[usageCount, updateusageCount] = useState(undefined),
+		[currency, updateCurrency] = useState(undefined)
 
 	useEffect(() => {
 		fetchInitialCollection()
 	}, [])
 
 	const fetchInitialCollection = async () => {
-		let history = await getCollection("2019-12-19")
+		let history = await getCollection(getDate(new Date()))
 
 		let temporaryData = history.docs.map(collection => collection.data())
 
@@ -84,6 +85,9 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				: 0
 		)
 
+		if(!isArrayBlank(temporaryData))
+			updateCurrency(temporaryData[0].transaction.currency)
+	
 		updateusageCount(temporaryData.length)
 	}
 
@@ -115,7 +119,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 					className={stackBody}
 					preload={typeof usage === "undefined"}
 				>
-					<Spent detail="Is spent on today" currency="฿">
+					<Spent detail="Is spent on today" currency={currency}>
 						{usage}
 					</Spent>
 				</Card>
@@ -162,7 +166,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 					className={stackBody}
 					preload={typeof usage === "undefined"}
 				>
-					<Spent detail="Is spent on today" currency="฿">
+					<Spent detail="Is spent on today" currency={currency}>
 						{usage}
 					</Spent>
 				</Card>
@@ -206,7 +210,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				preload={typeof usage === "undefined"}
 			>
 				<Card preload={typeof usage === "undefined"}>
-					<Spent detail="Is spent on today" currency="฿">
+					<Spent detail="Is spent on today" currency={currency}>
 						{usage}
 					</Spent>
 				</Card>
@@ -230,7 +234,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				className={[stackBody, __stackBody_isOpen]}
 				preload={typeof usage === "undefined"}
 			>
-				<Spent detail="Is spent on today" currency="฿">
+				<Spent detail="Is spent on today" currency={currency}>
 					{usage}
 				</Spent>
 			</Card>
