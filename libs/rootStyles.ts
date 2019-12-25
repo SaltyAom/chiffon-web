@@ -24,7 +24,7 @@ const rootStyles = new String(`
 
 		--background: #fff;
 		--root: #fff;
-		--preload: #efeff4;
+		--preload: #f1f2fa;
 	}
 
 	* {
@@ -44,6 +44,30 @@ const rootStyles = new String(`
 	#__next {
 		display: flex;
 		overflow: hidden;
+	}
+
+	@media (prefers-color-scheme: dark){
+		:root {
+			--primary-100: #176474;
+			--primary-200: #1f8c60;
+			--primary-300: #24a572;
+			--primary-400: #28b87e;
+			--primary-500: #3cc08b;
+			--primary-600: #71d4ac;
+			--primary-700: #b3ead4;
+			--primary-800: #d5f4e7;
+			--primary-900: #f4fcf9;	
+
+			--content: #eee;
+			--fade: #ccc;
+			--mist: #aaa;
+	
+			--link: #008dff;
+		
+			--background: #333;
+			--root: #555;
+			--preload: #777;
+		}
 	}
 `).replace(/ |\t|\n/g, "")
 

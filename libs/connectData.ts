@@ -56,6 +56,28 @@ export const getCollection = async date => {
 		.get()
 }
 
+export const getItem = async date => {
+	if (isServer) return
+
+	let { firestore } = init()
+
+	let event = new Date(date),
+		day = getDate(event),
+		time = getTime(event)
+
+	console.log(day, time)
+
+	return firestore
+		.collection("aomkirby123@gmail.com")
+		.doc("history")
+		.collection(day)
+		.doc(time)
+		.get()
+}
+
+export const getDate = (event) => `${event.getUTCFullYear()}-${event.getUTCMonth() + 1}-${event.getUTCDate()}`,
+	getTime = (event) => `${event.getUTCHours()}:${event.getUTCMinutes()}:${event.getUTCSeconds()}`
+
 export const getUpdate = async (date, callback) => {
 	if (isServer) return
 

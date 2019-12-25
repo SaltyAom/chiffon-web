@@ -1,7 +1,9 @@
 import { create } from 'libs/aphrodite'
+import { shadow } from 'libs/styleBreakpoints'
 
 const cardStyle = create({
     card: {
+        appearance: "none",
         position: "relative",
         display: "flex",
         flexDirection: "row",
@@ -13,7 +15,19 @@ const cardStyle = create({
         padding: "0 4px 0 0",
         borderRadius: "12px",
         backgroundColor: "var(--root)",
-        boxShadow: "0 1px 2px rgba(0,0,0,.015), 0 4px 8px rgba(0,0,0,.025), 0 8px 24px rgba(0,0,0,.0325), 0 16px 40px rgba(0,0,0,.0425)",
+        outline: "none",
+        border: 0,
+        boxShadow: shadow,
+        transition: "transform .15s ease-out",
+        ":hover": {
+            transform: "scale(1.05)"
+        },
+        ":focs": {
+            transform: "scale(1.05)"
+        },
+        ":active": {
+            transform: "scale(1)"
+        }
     },
     wrapper: {
         position: "relative",

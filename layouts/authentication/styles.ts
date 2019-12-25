@@ -37,7 +37,10 @@ const authenticationStyle = create({
         touchAction: "manipulation",
         outline: "none",
         cursor: "pointer",
-        ":hover, :focus": {
+        ":hover": {
+            boxShadow: "0 4px 8px rgba(0,0,0, .2)"
+        },
+        ":focus": {
             boxShadow: "0 4px 8px rgba(0,0,0, .2)"
         },
         ":active": {

@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, Fragment } from "react"
 
 import { connect } from "react-redux"
 
@@ -15,8 +15,9 @@ import { css } from "libs/aphrodite"
 import {
 	drawer as drawerStyle,
 	__drawer_isOpen,
-	__icon_isOpen,
+	__drawer_sticky,
 	icon,
+	__icon_isOpen,
 	navigationBody
 } from "./styles"
 
@@ -82,25 +83,28 @@ const Sidebar: TDrawer = memo(({ store }) => {
 	]
 
 	return (
-		<aside className={applyState(drawerStyle, __drawer_isOpen)}>
-			<section className={css(navigationBody)}>
-				{navigationLists.map(navigation => (
-					<DrawerNavigation key={navigation.title} {...navigation} />
-				))}
-			</section>
-			<ProfileBadge
-				profileIcon="/mock/akashi.png"
-				name={name}
-				isOpen={isOpen}
-				preload={!isLoggedIn}
-			/>
-			{/* <ProfileBadge
-				profileIcon={profile}
-				name={name}
-				isOpen={isOpen}
-				preload={!isLoggedIn}
-			/> */}
-		</aside>
+		<Fragment>
+			<div className={applyState(drawerStyle, __drawer_isOpen)} />
+			<aside className={applyState([drawerStyle, __drawer_sticky], __drawer_isOpen)}>
+				<section className={css(navigationBody)}>
+					{navigationLists.map(navigation => (
+						<DrawerNavigation key={navigation.title} {...navigation} />
+					))}
+				</section>
+				<ProfileBadge
+					profileIcon="/mock/akashi.png"
+					name={name}
+					isOpen={isOpen}
+					preload={!isLoggedIn}
+				/>
+				{/* <ProfileBadge
+					profileIcon={profile}
+					name={name}
+					isOpen={isOpen}
+					preload={!isLoggedIn}
+				/> */}
+			</aside>
+		</Fragment>
 	)
 })
 

@@ -1,4 +1,5 @@
 import { create } from "libs/aphrodite"
+import { shadow } from 'libs/styleBreakpoints'
 
 const applyMotion = ({
 	start = 0,
@@ -14,7 +15,7 @@ const applyMotion = ({
 			from: {
 				top: `${reversed ? end : start}px`,
 				transform: `scale(${!secondOrThirdStack ? scale : 1})`,
-				opacity: !reversed && secondOrThirdStack ? opacity : 1,
+				opacity: !reversed && secondOrThirdStack ? opacity : 1
 			},
 			to: {
 				top: `${reversed ? (secondOrThirdStack ? start : 0) : end}px`,
@@ -24,8 +25,8 @@ const applyMotion = ({
 				boxShadow:
 					reversed && !secondOrThirdStack
 						? ""
-						: "rgba(0, 0, 0, 0.016) 0px 1px 2px, rgba(0, 0, 0, 0.024) 0px 4px 8px, rgba(0, 0, 0, 0.03) 0px 8px 24px, rgba(0, 0, 0, 0.043) 0px 16px 40px",
-				opacity: reversed && secondOrThirdStack ? opacity : 1,
+						: shadow,
+				opacity: reversed && secondOrThirdStack ? opacity : 1
 			}
 		}
 	],
@@ -37,7 +38,7 @@ const applyMotion = ({
 	boxShadow:
 		reversed && !secondOrThirdStack
 			? ""
-			: "rgba(0, 0, 0, 0.016) 0px 1px 2px, rgba(0, 0, 0, 0.024) 0px 4px 8px, rgba(0, 0, 0, 0.03) 0px 8px 24px, rgba(0, 0, 0, 0.043) 0px 16px 40px"
+			: shadow
 })
 
 const stackMotion = create({

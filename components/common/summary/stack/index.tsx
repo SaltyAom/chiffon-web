@@ -19,6 +19,7 @@ import {
 	stackInnerWrapper,
 	__stackInnerWrapper_isOpen,
 	stackBody,
+	__stackBody_isOpen,
 	secondStacked,
 	thirdStacked,
 	ghostStacked
@@ -107,6 +108,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				className={[stackWrapper, __stackWrapper_expanded]}
 				wrapperClassName={stackInnerWrapper}
 				noMark
+				asDiv
 				onClick={() => handleStack()}
 			>
 				<Card
@@ -153,6 +155,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				className={stackWrapper}
 				wrapperClassName={stackInnerWrapper}
 				noMark
+				asDiv
 				onClick={() => handleStack()}
 			>
 				<Card
@@ -198,6 +201,7 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 				className={[stackWrapper, __stackWrapper_isOpen]}
 				wrapperClassName={__stackInnerWrapper_isOpen}
 				noMark
+				asDiv
 				onClick={() => toggleStack()}
 				preload={typeof usage === "undefined"}
 			>
@@ -216,8 +220,16 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 		)
 
 	return (
-		<Card className={stackWrapper} noMark onClick={() => handleStack()}>
-			<Card className={stackBody} preload={typeof usage === "undefined"}>
+		<Card
+			className={stackWrapper}
+			noMark
+			asDiv
+			onClick={() => handleStack()}
+		>
+			<Card
+				className={[stackBody, __stackBody_isOpen]}
+				preload={typeof usage === "undefined"}
+			>
 				<Spent detail="Is spent on today" currency="฿">
 					{usage}
 				</Spent>
@@ -225,10 +237,12 @@ const StackCard: TSummaryStack = ({ store, dispatch }) => {
 			<Card
 				className={secondStacked}
 				preload={typeof usage === "undefined"}
+				asDiv
 			/>
 			<Card
 				className={thirdStacked}
 				preload={typeof usage === "undefined"}
+				asDiv
 			/>
 		</Card>
 	)

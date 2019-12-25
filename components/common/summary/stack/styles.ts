@@ -6,9 +6,16 @@ const stackStyle = create({
 		alignItems: "flex-start",
 		height: "120px",
 		padding: 0,
+		backgroundColor: "transparent",
 		boxShadow: 0,
 		transition: "transform .375s ease-out, height .55s ease-out",
-		":active, :focus": {
+		":hover": {
+			transform: "scale(1)"
+		},
+		":active": {
+			transform: "scale(.95)"
+		},
+		":focus": {
 			transform: "scale(.95)"
 		}
 	},
@@ -28,7 +35,15 @@ const stackStyle = create({
 		height: "680px"
 	},
 	stackBody: {
-		margin: 0
+		margin: 0,
+		":hover": {
+			transform: "scale(1)"
+		},
+	},
+	__stackBody_isOpen: {
+		":hover": {
+			transform: "unset"
+		}
 	},
 	secondStacked: {
 		position: "absolute",
@@ -55,6 +70,7 @@ export const {
 	stackInnerWrapper,
 	__stackInnerWrapper_isOpen,
 	stackBody,
+	__stackBody_isOpen,
 	secondStacked,
 	thirdStacked,
 	ghostStacked

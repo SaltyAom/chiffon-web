@@ -17,18 +17,26 @@ const profileBadegStyle = create({
 		transition: "background-color .2s ease-out",
 		cursor: "pointer",
 		outline: "none",
-		":hover, :focus": {
+		":hover": {
+			transform: "scale(1)",
+			backgroundColor: "var(--primary-200)"
+		},
+		":focus": {
 			transform: "scale(1)",
 			backgroundColor: "var(--primary-200)"
 		},
 		[smallDrawerBreakpoint]: {
+			width: "40px",
 			padding: 0,
-			justifyContent: "center"
+			justifyContent: "center",
+			borderRadius: "50%",
 		}
 	},
 	__profile_isOpen: {
 		[smallDrawerBreakpoint]: {
-			justifyContent: "flex-start"
+			width: "100%",
+			justifyContent: "flex-start",
+			borderRadius: "8px"
 		}
 	},
 	profileFigure: {
@@ -45,7 +53,7 @@ const profileBadegStyle = create({
 		display: "block",
 		width: "inherit",
 		height: "inherit",
-		borderRadius: "inheirt",
+		borderRadius: "inherit",
 		margin: 0
 	},
 	profileName: {

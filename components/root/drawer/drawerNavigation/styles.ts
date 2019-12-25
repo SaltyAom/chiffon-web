@@ -1,6 +1,6 @@
 import { create } from 'libs/aphrodite'
 
-import { drawerBreakpoint, smallDrawerBreakpoint } from 'libs/styleBreakpoints'
+import { drawerBreakpoint, smallDrawerBreakpoint, darkTheme } from 'libs/styleBreakpoints'
 
 const drawerLinkStyle = create({
     link: {
@@ -21,10 +21,15 @@ const drawerLinkStyle = create({
         cursor: "pointer",
         touchAction: "manipulation",
         outline: "none",
-        ":hover, :focus": {
+        ":hover": {
             transform: "scale(1)",
             backgroundColor: "var(--primary-200)",
-            boxShadow: "0 4px 12px var(--primary-100)",
+            boxShadow: "0 4px 12px var(--primary-100)"
+        },
+        ":focus": {
+            transform: "scale(1)",
+            backgroundColor: "var(--primary-200)",
+            boxShadow: "0 4px 12px var(--primary-100)"
         },
         [drawerBreakpoint]: {
             width: "fit-content",
@@ -45,6 +50,9 @@ const drawerLinkStyle = create({
         ":hover": {
             background: "linear-gradient(45deg, var(--primary-700), var(--primary-500))",
             boxShadow: "0 4px 12px var(--primary-400)"
+        },
+        [darkTheme]: {
+            background: "linear-gradient(45deg, var(--primary-300), var(--primary-500))",   
         }
     },
     __isOpen: {

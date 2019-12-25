@@ -6,6 +6,7 @@ interface ICard {
     noMark?: boolean
     onClick?: Function
     preload?: boolean
+    asDiv?: boolean
 }
 
 type TCard = FC<ICard>

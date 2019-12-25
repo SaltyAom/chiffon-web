@@ -1,22 +1,20 @@
 import { create } from 'libs/aphrodite'
 
-import { smallDrawerBreakpoint, drawerBreakpoint } from 'libs/styleBreakpoints'
-
 const historyStyle = create({
     history: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-start",
-        width: "100%",
-        [smallDrawerBreakpoint]: {
-            width: "50%"
-        },
-        [drawerBreakpoint]: {
-            width: "33.33%"
-        }
+        width: "100%"
+    },
+    title: {
+        color: "var(--content)",
+        fontSize: "18px",
+        fontWeight: "normal",
+        margin: 0
     }
 })
 
-export const { history } = historyStyle
+export const { history, title } = historyStyle
 export default historyStyle
